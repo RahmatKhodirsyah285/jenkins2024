@@ -1,20 +1,21 @@
 pipeline{
     agent any
     stages{
-        stage("A"){
+        stage("Laravel Test"){
             steps{
-                echo "========executing A========"
+                php artisan test
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+        }
+        stage("Dockerized Laravel"){
+            steps{
+                docker build -t rahmat/app3
+                docker tag rahmat/app3 localhost:5000/rahmat/app3
+                docker push localhost:5000/rahmat/app3
+            }
+        }
+        stage("Deploy"){
+            steps{
+                docker run --name myapp3 -p 9060:8000 -d localhost:5000/rahmat/app3
             }
         }
     }
