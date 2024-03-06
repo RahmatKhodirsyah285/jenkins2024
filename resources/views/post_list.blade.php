@@ -2,7 +2,7 @@
     use function PHPUnit\Framework\isNull;
 ?>
 <div>
-    <h1>Welcome To Inixindo {{gethostname()}} </h1>
+    <h1>Welcome To Inixindo {{gethostname()}} {{$title}} </h1>
     <form action="" method="GET">
         <div>
             <label> Masukan Nama </label>
