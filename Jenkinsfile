@@ -3,19 +3,19 @@ pipeline{
     stages{
         stage("Laravel Test"){
             steps{
-                php artisan test
+                sh php artisan test
             }
         }
         stage("Dockerized Laravel"){
             steps{
-                docker build -t rahmat/app3
-                docker tag rahmat/app3 localhost:5000/rahmat/app3
-                docker push localhost:5000/rahmat/app3
+                sh docker build -t rahmat/app3
+                sh docker tag rahmat/app3 localhost:5000/rahmat/app3
+                sh docker push localhost:5000/rahmat/app3
             }
         }
         stage("Deploy"){
             steps{
-                docker run --name myapp3 -p 9060:8000 -d localhost:5000/rahmat/app3
+                sh docker run --name myapp3 -p 9060:8000 -d localhost:5000/rahmat/app3
             }
         }
     }
