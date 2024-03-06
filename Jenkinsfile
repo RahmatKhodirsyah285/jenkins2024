@@ -1,40 +1,15 @@
 pipeline{
-    agent{
-        label "node"
-    }
+    agent any
     stages{
-        stage("stage A"){
+        stage("stage1"){
             steps{
-                echo "========executing A========"
+                echo "========executing 1========"
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
+            
         }
-    }
-    stages{
-        stage("stage B"){
+        stage("stage2"){
             steps{
-                echo "========executing B========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+                echo "========executing 2========"
             }
         }
     }
