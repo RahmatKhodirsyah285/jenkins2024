@@ -1,8 +1,9 @@
 pipeline{
     agent any
     stages{
-        stage("Laravel Test"){
+        stage("Laravel Build and Test"){
             steps{
+                sh 'php artisan key:generate'
                 sh 'php artisan test'
             }
         }
