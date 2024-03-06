@@ -13,7 +13,7 @@ class PostConstroller extends Controller
     public function index(Request $request)
     {
         //
-        $title = $request->title != ""? $request->title:"Hello";
+        $title = $request->title == ''? "Hello": $request->title;
         return View('post_list', compact('title'));
     }
 

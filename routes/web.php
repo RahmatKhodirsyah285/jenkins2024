@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('post_list');
 });
+Route::get('/', [PostConstroller::class, 'post_list'])->name('post_list');
+Route::resource('/', PostConstroller::class);
