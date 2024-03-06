@@ -3,6 +3,8 @@ pipeline{
     stages{
         stage("Laravel Build and Test"){
             steps{
+                git 'https://github.com/RahmatKhodirsyah285/jenkins2024.git'
+                sh 'composer install'
                 sh 'php artisan key:generate'
                 sh 'php artisan test'
             }
