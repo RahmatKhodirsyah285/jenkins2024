@@ -26,6 +26,7 @@ pipeline{
         }
         stage("Deploy"){
             steps{
+                sh 'docker rm -f myappjen'
                 sh 'docker run --name myappjen -p 9060:8000 -d localhost:5000/rahmat/apptry'
             }
         }
