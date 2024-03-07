@@ -10,7 +10,7 @@ pipeline{
         }
         stage("Dockerized Laravel"){
             steps{
-                sh 'docker build -t rahmat/apptry '
+                sh 'docker build -t rahmat/apptry .'
                 sh 'docker tag rahmat/apptry localhost:5000/rahmat/apptry '
                 sh 'docker push localhost:5000/rahmat/apptry '
             }
