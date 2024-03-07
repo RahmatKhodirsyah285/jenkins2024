@@ -1,11 +1,20 @@
 pipeline{
     agent any
     stages{
-        stage("Laravel Build and Test"){
+        stage("Laravel Build"){
             steps{
                 sh 'composer update'
                 sh 'php artisan key:generate'
+                sh 'composer require laravel/dusk --dev'
+                sh 'php artsian dusk:install'
+                sh 'php artisan dusk:chrome-driver'
                 sh 'php artisan test'
+            }
+        }
+        stage("Testing"){
+            steps{
+                sh 'php artisan test'
+                sh 'php artisan dusk'
             }
         }
         stage("Dockerized Laravel"){
