@@ -3,6 +3,7 @@ pipeline{
     stages{
         stage("Laravel Build and Test"){
             steps{
+                sh 'composer update'
                 sh 'php artisan key:generate'
                 sh 'php artisan test'
             }
