@@ -6,7 +6,7 @@ pipeline{
                 sh 'composer update'
                 sh 'php artisan key:generate'
                 sh 'composer require laravel/dusk --dev'
-                sh 'php artsian dusk:install'
+                sh 'php artisan dusk:install'
                 sh 'php artisan dusk:chrome-driver'
                 sh 'php artisan test'
             }
